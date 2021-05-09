@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        environment:
+            CHOKIDAR_USEPOLLING: 'true'
+        volumes:
+            - ./app/node_modules
+            - ./frontend:/app
+        networks: 
+            - front
+
+    nginx:
+        depends_on:
+            - frontend
+        build: 
+            context: ./nginx
+            dockerfile: Dockerfile
+        ports: 
+            - 80:80
+        networks: 
+            - front
+
+networks:
+    front:
+        driver: bridge

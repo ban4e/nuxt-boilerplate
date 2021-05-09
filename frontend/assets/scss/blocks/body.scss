@@ -1,0 +1,30 @@
+.body {
+    &__fallback {
+        display: flex;
+    }
+    &__wrapper {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        min-height: 100vh;
+        overflow: hidden;
+        transition: $transition-main;
+    }
+    &__header {
+        flex: 0 0 auto;
+    }
+    &__container {
+        flex: 1 1 auto;
+        padding-bottom: 48px;
+        @include media-breakpoint-down(sm) {
+            padding-bottom: 20px;
+        }
+    }
+}
+
+.body.is-overlay {
+    overflow: hidden;
+    .body__wrapper {
+        filter: blur(10px);
+    }
+}
