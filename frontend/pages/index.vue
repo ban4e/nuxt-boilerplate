@@ -13,7 +13,9 @@
                     </template>
                 </BaseButton>
             </div>
-            <div class="grid-item grid-item_4x">Сетка</div>
+            <div class="grid-item grid-item_4x">
+                <BaseInput error="Ошибка" />
+            </div>
         </div>
     </div>
 </template>

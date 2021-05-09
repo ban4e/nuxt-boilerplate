@@ -30,3 +30,27 @@
         transform: rotate(360deg);
     }
 }
+
+@keyframes jello-horizontal {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+    30% {
+        transform: scale3d(1.125, 0.875, 1);
+    }
+    40% {
+        transform: scale3d(0.875, 1.125, 1);
+    }
+    50% {
+        transform: scale3d(1.08, 0.96, 1);
+    }
+    65% {
+        transform: scale3d(0.98, 1.02, 1);
+    }
+    75% {
+        transform: scale3d(1.02, 0.98, 1);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
