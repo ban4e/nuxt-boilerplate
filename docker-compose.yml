@@ -6,24 +6,33 @@ services:
             context: ./frontend
             dockerfile: Dockerfile
         environment:
-            CHOKIDAR_USEPOLLING: 'true'
+            CHOKIDAR_USEPOLLING: "true"
+        command: sh -c "npm install --no-save && npm run dev"
         volumes:
-            - ./app/node_modules
             - ./frontend:/app
-        networks: 
+            - node_modules:/app/node_modules/
+        networks:
             - front
 
     nginx:
         depends_on:
             - frontend
-        build: 
+        build:
             context: ./nginx
             dockerfile: Dockerfile
-        ports: 
+        ports:
             - 80:80
-        networks: 
+        networks:
             - front
 
 networks:
     front:
         driver: bridge
+
+volumes:
+    node_modules:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: ./frontend/node_modules
